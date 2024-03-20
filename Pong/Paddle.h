@@ -7,13 +7,14 @@ class Paddle
 private:
 
 	sf::RenderWindow* window;
-	sf::RectangleShape rectangle;
 	sf::Keyboard::Key upKey;
 	sf::Keyboard::Key downKey;
 
 	float speed;
 
 public:
+
+	sf::RectangleShape rectangle;
 
 	Paddle(sf::RenderWindow* gameWindow, 
 		sf::Vector2f position, 

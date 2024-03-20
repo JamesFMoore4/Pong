@@ -13,11 +13,16 @@ Paddle::Paddle(sf::RenderWindow* gameWindow, sf::Vector2f position, sf::Keyboard
 
 void Paddle::Update(sf::Time deltaTime)
 {
-	if (sf::Keyboard::isKeyPressed(upKey))
+	if (sf::Keyboard::isKeyPressed(upKey) && rectangle.getPosition().y >= 0)
+	{
 		rectangle.setPosition(rectangle.getPosition() + sf::Vector2f(0, -1) * speed * (float)deltaTime.asMilliseconds());
+	}
 
-	if (sf::Keyboard::isKeyPressed(downKey))
+	if (sf::Keyboard::isKeyPressed(downKey)
+		&& rectangle.getPosition().y + rectangle.getSize().y <= window->getSize().y)
+	{
 		rectangle.setPosition(rectangle.getPosition() + sf::Vector2f(0, 1) * speed * (float)deltaTime.asMilliseconds());
+	}
 }
 
 void Paddle::Draw()
