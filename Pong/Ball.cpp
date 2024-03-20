@@ -4,7 +4,7 @@ Ball::Ball(sf::RenderWindow* gameWindow) :
 	window(gameWindow),
 	rectangle(sf::RectangleShape(sf::Vector2f(15.0f, 15.0f))),
 	speed(0.25f),
-	acceleration(0.25f),
+	acceleration(0.05f),
 	direction(Direction(-1, 1))
 {
 	rectangle.setPosition(392.5f, 292.5f);
@@ -28,11 +28,12 @@ void Ball::Update(sf::Time deltaTime, Paddle& leftPaddle, Paddle& rightPaddle)
 		direction.y = 1;
 		speed = 0.25f;
 	}
-	//If ball hits left or right paddle, reverse x direction
+	//If ball hits left or right paddle, reverse x direction and increase speed
 	else if (CheckRectCollision(rectangle.getGlobalBounds(), leftPaddle.rectangle.getGlobalBounds())
 		|| CheckRectCollision(rectangle.getGlobalBounds(), rightPaddle.rectangle.getGlobalBounds()))
 	{
 		direction.x *= -1;
+		speed += acceleration;
 	}
 	
 }

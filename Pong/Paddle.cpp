@@ -6,7 +6,7 @@ Paddle::Paddle(sf::RenderWindow* gameWindow, sf::Vector2f position, sf::Keyboard
 	rectangle(sf::RectangleShape(sf::Vector2f(15.0f, 100.0f))),
 	upKey(ctrlKeyUp),
 	downKey(ctrlKeyDown),
-	speed(2.0f)
+	speed(1.0f)
 {
 	rectangle.setPosition(position);
 }
