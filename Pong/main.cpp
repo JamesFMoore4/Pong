@@ -29,7 +29,7 @@ int main()
 
 		leftPaddle.Update(deltaTime);
 		rightPaddle.Update(deltaTime);
-		ball.Update(deltaTime, leftPaddle, rightPaddle);
+		ball.Update(deltaTime, leftPaddle, rightPaddle, scoreboard);
 		scoreboard.Update();
 
 		window.clear(sf::Color(0, 77, 153, 255));

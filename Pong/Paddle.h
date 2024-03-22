@@ -9,12 +9,14 @@ private:
 	sf::RenderWindow* window;
 	sf::Keyboard::Key upKey;
 	sf::Keyboard::Key downKey;
+	sf::RectangleShape rectangle;
 
 	float speed;
+	float middleUpperBoundary;
+	float middleLowerBoundary;
+	bool isRunning;
 
 public:
-
-	sf::RectangleShape rectangle;
 
 	Paddle(sf::RenderWindow* gameWindow, 
 		sf::Vector2f position, 
@@ -22,6 +24,9 @@ public:
 		sf::Keyboard::Key ctrlKeyDown);
 	void Update(sf::Time deltaTime);
 	void Draw();
+	sf::FloatRect GetGlobalBounds();
+	float getMiddleUpperBoundary();
+	float getMiddleLowerBoundary();
 
 };
 

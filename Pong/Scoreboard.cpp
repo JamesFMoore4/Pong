@@ -1,6 +1,6 @@
 #include "Scoreboard.h"
 
-Scoreboard::Scoreboard(sf::RenderWindow* gameWindow) : window(gameWindow), leftScore(0), rightScore(0)
+Scoreboard::Scoreboard(sf::RenderWindow* gameWindow) : window(gameWindow), leftScore(0), rightScore(0), lastCollision(none)
 {
 	if (font.loadFromFile("Assets/bit5x3.ttf"))
 	{
@@ -17,11 +17,32 @@ Scoreboard::Scoreboard(sf::RenderWindow* gameWindow) : window(gameWindow), leftS
 	}
 }
 
+void Scoreboard::incrementRightScore()
+{
+	rightScore++;
+}
+
+void Scoreboard::incrementLeftScore()
+{
+	leftScore++;
+}
+
 void Scoreboard::Update()
 {
+	text.setString(std::to_string(leftScore) + "    " + std::to_string(rightScore));
 }
 
 void Scoreboard::Draw()
 {
 	window->draw(text);
+}
+
+Collision Scoreboard::getLastCollision()
+{
+	return lastCollision;
+}
+
+void Scoreboard::setLastCollision(Collision collision)
+{
+	lastCollision = collision;
 }

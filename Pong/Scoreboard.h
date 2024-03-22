@@ -3,6 +3,11 @@
 #include <string>
 #include <iostream>
 
+enum Collision
+{
+	left, right, none
+};
+
 class Scoreboard
 {
 private:
@@ -10,6 +15,7 @@ private:
 	sf::Font font;
 	sf::Text text;
 	sf::RenderWindow* window;
+	Collision lastCollision;
 
 	int rightScore;
 	int leftScore;
@@ -17,7 +23,11 @@ private:
 public:
 
 	Scoreboard(sf::RenderWindow* window);
+	void incrementRightScore();
+	void incrementLeftScore();
 	void Update();
 	void Draw();
+	Collision getLastCollision();
+	void setLastCollision(Collision collision);
 };
 
