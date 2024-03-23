@@ -31,8 +31,8 @@ public:
 	void IncrementLeftScore();
 	void Update();
 	void Draw();
-	Collision getLastCollision();
-	void GetLastCollision(Collision collision);
+	Collision GetLastCollision();
+	void SetLastCollision(Collision collision);
 	bool IsRunning();
 	void SetRunning(bool isRunning);
 	bool IsOver();

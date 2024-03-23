@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
 
 #include "Direction.h"
 #include "Math.h"
@@ -12,6 +13,10 @@ private:
 
 	sf::RenderWindow* window;
 	sf::RectangleShape rectangle;
+	sf::SoundBuffer wallImpactBuffer;
+	sf::SoundBuffer paddleImpactBuffer;
+	sf::Sound wallImpactSound;
+	sf::Sound paddleImpactSound;
 	
 	float speed;
 	float acceleration;

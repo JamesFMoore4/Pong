@@ -8,7 +8,7 @@ Scoreboard::Scoreboard(sf::RenderWindow* gameWindow) :
 	isRunning(true),
 	isOver(false)
 {
-	if (font.loadFromFile("Assets/bit5x3.ttf"))
+	if (font.loadFromFile("Assets/Fonts/bit5x3.ttf"))
 	{
 		scoreText.setFont(font);
 		scoreText.setString(std::to_string(leftScore) + "    " + std::to_string(rightScore));
@@ -71,12 +71,12 @@ void Scoreboard::Draw()
 	if (isOver) window->draw(endText);
 }
 
-Collision Scoreboard::getLastCollision()
+Collision Scoreboard::GetLastCollision()
 {
 	return lastCollision;
 }
 
-void Scoreboard::GetLastCollision(Collision collision)
+void Scoreboard::SetLastCollision(Collision collision)
 {
 	lastCollision = collision;
 }
