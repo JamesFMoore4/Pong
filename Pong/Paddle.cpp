@@ -8,8 +8,7 @@ Paddle::Paddle(sf::RenderWindow* gameWindow, sf::Vector2f position, sf::Keyboard
 	downKey(ctrlKeyDown),
 	speed(1.0f),
 	middleUpperBoundary(position.y + 100.0f * (2.0f / 5.0f)),
-	middleLowerBoundary(position.y + 100.0f * (3.0f / 5.0f)),
-	isRunning(true)
+	middleLowerBoundary(position.y + 100.0f * (3.0f / 5.0f))
 {
 	rectangle.setPosition(position);
 }

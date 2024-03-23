@@ -13,21 +13,28 @@ class Scoreboard
 private:
 
 	sf::Font font;
-	sf::Text text;
+	sf::Text scoreText;
+	sf::Text pauseText;
+	sf::Text endText;
 	sf::RenderWindow* window;
 	Collision lastCollision;
 
 	int rightScore;
 	int leftScore;
+	bool isRunning;
+	bool isOver;
 
 public:
 
 	Scoreboard(sf::RenderWindow* window);
-	void incrementRightScore();
-	void incrementLeftScore();
+	void IncrementRightScore();
+	void IncrementLeftScore();
 	void Update();
 	void Draw();
 	Collision getLastCollision();
-	void setLastCollision(Collision collision);
+	void GetLastCollision(Collision collision);
+	bool IsRunning();
+	void SetRunning(bool isRunning);
+	bool IsOver();
 };
 

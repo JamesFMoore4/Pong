@@ -1,4 +1,5 @@
 #include <SFML\Graphics.hpp>
+#include <Windows.h>
 
 #include "Paddle.h"
 #include "Ball.h"
@@ -23,23 +24,41 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					scoreboard.IsRunning() ? scoreboard.SetRunning(false) : scoreboard.SetRunning(true);
+				}
+			}
 		}
 
 		sf::Time deltaTime = clock.restart();
 
-		leftPaddle.Update(deltaTime);
-		rightPaddle.Update(deltaTime);
-		ball.Update(deltaTime, leftPaddle, rightPaddle, scoreboard);
-		scoreboard.Update();
+		if (scoreboard.IsRunning())
+		{
+			leftPaddle.Update(deltaTime);
+			rightPaddle.Update(deltaTime);
+			ball.Update(deltaTime, leftPaddle, rightPaddle, scoreboard);
+			scoreboard.Update();
+		}
 
 		window.clear(sf::Color(0, 77, 153, 255));
 
 		scoreboard.Draw();
 		leftPaddle.Draw();
 		rightPaddle.Draw();
-		ball.Draw();
+		if (!scoreboard.IsOver()) //Prevents the ball from being redrawn when the game is over
+			ball.Draw();
 
 		window.display();
+
+		if (scoreboard.IsOver())
+		{
+			Sleep(3000);
+			window.close();
+		}
 	}
 
 	return 0;

@@ -14,7 +14,7 @@ private:
 	float speed;
 	float middleUpperBoundary;
 	float middleLowerBoundary;
-	bool isRunning;
+	
 
 public:
 

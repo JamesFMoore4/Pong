@@ -23,8 +23,8 @@ void Ball::Update(sf::Time deltaTime, Paddle& leftPaddle, Paddle& rightPaddle, S
 	// If ball hits right wall, increment left score and reset ball
 	else if (rectangle.getPosition().x + rectangle.getSize().x >= window->getSize().x)
 	{
-		scoreboard.incrementLeftScore();
-		scoreboard.setLastCollision(none);
+		scoreboard.IncrementLeftScore();
+		scoreboard.GetLastCollision(none);
 		rectangle.setPosition(window->getSize().x / 2, 0);
 		direction.x = -1;
 		direction.y = 1;
@@ -33,8 +33,8 @@ void Ball::Update(sf::Time deltaTime, Paddle& leftPaddle, Paddle& rightPaddle, S
 	//Increment right score and reset ball
 	else if (rectangle.getPosition().x <= 0)
 	{
-		scoreboard.incrementRightScore();
-		scoreboard.setLastCollision(none);
+		scoreboard.IncrementRightScore();
+		scoreboard.GetLastCollision(none);
 		rectangle.setPosition(window->getSize().x / 2, 0);
 		direction.x = -1;
 		direction.y = 1;
@@ -48,7 +48,7 @@ void Ball::Update(sf::Time deltaTime, Paddle& leftPaddle, Paddle& rightPaddle, S
 		{
 			direction.x *= -1;
 			if (speed < maxSpeed) speed += acceleration;
-			scoreboard.setLastCollision(right);
+			scoreboard.GetLastCollision(right);
 
 			//If ball hits middle of paddle, ball should move straight (top left of screen is origin)
 			if (rectangle.getPosition().y > rightPaddle.getMiddleUpperBoundary()
@@ -69,7 +69,7 @@ void Ball::Update(sf::Time deltaTime, Paddle& leftPaddle, Paddle& rightPaddle, S
 		{
 			direction.x *= -1;
 			if (speed < maxSpeed) speed += acceleration;
-			scoreboard.setLastCollision(left);
+			scoreboard.GetLastCollision(left);
 
 			if (rectangle.getPosition().y > leftPaddle.getMiddleUpperBoundary()
 				&& rectangle.getPosition().y < leftPaddle.getMiddleLowerBoundary())
